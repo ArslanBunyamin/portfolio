@@ -1,38 +1,303 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: 0.1s;
+  user-select: none;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+::-webkit-scrollbar {
+  width: 0;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+  background-color: #0a0a0a;
+  height: 100vh;
+  color: #dddddd;
+  font-family: "Montserrat", sans-serif;
+  overflow: hidden;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar {
+  position: fixed;
+  width: 100%;
+  height: 8vh;
+  background-color: #1a1a1a;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+}
+.navbar .name {
+  font-family: "Caveat", cursive;
+  color: palegreen;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  font-size: 28px;
+}
+.navbar .link-container {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.navbar .link-container .link {
+  color: #dddddd;
+  text-decoration: none;
+  padding: 0 32px;
+  transition: 0.2s;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.navbar .link-container .link:hover {
+  color: palegreen;
+}
+.navbar .link.active {
+  color: palegreen;
+}
+.main {
+  position: relative;
+  height: 92vh;
+  width: 100vw;
+  margin-top: 8vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  perspective: 10px;
+  scroll-behavior: smooth;
+}
+#home {
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  z-index: -1;
+}
+.background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: -1;
+  transform: translateZ(-10px) scale(2);
+}
+#home .wrapper {
+  padding: 15px 0;
+  width: 640px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
+  box-shadow: 10px 10px 32px black;
+}
+#home .wrapper .right {
+  height: 300px;
+}
+#home .wrapper .right .name {
+  font-family: "Caveat", cursive;
+  color: palegreen;
+  font-size: 24px;
+}
+#home .wrapper .right .frontend {
+  font-size: 56px;
+  font-weight: 200;
+}
+#home .wrapper .right .developer {
+  font-size: 64px;
+  color: palegreen;
+  font-weight: 500;
+}
+#home .wrapper .right .social {
+  width: 100%;
+  padding-top: 24px;
+  display: flex;
+  justify-content: left;
+}
+#home .wrapper .right .social a {
+  font-size: 48px;
+  margin-right: 24px;
+}
+#home .wrapper .right .social a:hover {
+  font-size: 56px;
+  transform: rotate(8deg);
+}
+#home .wrapper .right .social .instgrm {
+  color: #8a3ab9;
+}
+#home .wrapper .right .social .twttr {
+  color: #1da1f2;
+}
+.img-container {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-image: linear-gradient(to bottom right, palegreen, black);
+  width: 200px;
+  height: 300px;
+  overflow: hidden;
+  transition: border-radius 0.5s;
+  margin-right: 16px;
+  animation: fancyBorder 3s ease-in-out infinite;
+}
+@keyframes fancyBorder {
+  0% {
+    border-radius: 45% 55% 68% 32% / 72% 47% 53% 28%;
+  }
+  50% {
+    border-radius: 67% 33% 59% 41% / 46% 30% 70% 54%;
+  }
+  100% {
+    border-radius: 45% 55% 68% 32% / 72% 47% 53% 28%;
+  }
+}
+.img-container img {
+  height: 100%;
+  transform: translateY(16px);
+}
+#skills {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: #0a0a0a;
+}
+.skill {
+  margin: 64px 24px;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(36, 187, 36),
+    rgb(15, 70, 15)
+  );
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 600;
+}
+.skill:hover {
+  box-shadow: 2px 2px 20px green;
+}
+.skill .js {
+  color: #ead41c;
+  font-size: 64px;
+}
+.skill .react {
+  font-size: 64px;
+  color: #3fb7d8;
+}
+.skill .firebase {
+  font-size: 64px;
+  color: #ffa611;
+}
+#aboutme {
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  z-index: -1;
+}
+#aboutme .wrapper {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 24px;
+  padding: 0 12vw;
+}
+#aboutme .wrapper .hello {
+  color: palegreen;
+  font-weight: 200;
+  margin: 16px 0;
+}
+#aboutme .wrapper .lorem {
+  font-weight: 400;
+}
+#contactme {
+  background-color: #0a0a0a;
+  height: 100%;
+}
+#contactme .getintouch {
+  padding: 64px 12vw;
+  color: palegreen;
+  font-size: 20px;
+  font-weight: 200;
+}
+#contactme .content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-.App-link {
-  color: #61dafb;
+#contactme .content .left {
+  border-right: 2px dashed palegreen;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 16px;
+  color: palegreen;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#contactme .content .left .header {
+  font-size: 40px;
+  font-weight: 200;
+  margin-bottom: 28px;
+}
+#contactme .content .left .info {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+.info .logo {
+  margin-right: 12px;
+  font-size: 20px;
+}
+.left .footer {
+  margin-top: 96px;
+  font-weight: 100;
+}
+#contactme .content .right {
+  padding: 16px;
+}
+#contactme form {
+  width: 200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 8px;
+}
+form input,
+textarea {
+  outline: none;
+  border: 1px solid palegreen;
+  background: none;
+  padding: 8px 12px;
+  color: palegreen;
+  border-radius: 5px;
+  resize: none;
+}
+form textarea:focus,
+input:focus {
+  border-color: rgb(82, 160, 82);
+}
+form .phone {
+  grid-column: 1/3;
+}
+form .text-area {
+  grid-column: 1/3;
+  grid-row: 3/5;
+}
+form .submitWrapper input {
+  padding: 12px 24px;
+  cursor: pointer;
+}
+form .submitWrapper input:hover {
+  background-color: palegreen;
+  color: black;
 }
